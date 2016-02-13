@@ -1,14 +1,13 @@
-include env_make
-NS = $(USER)
-VERSION ?= latest
+NS = jbregman
+VERSION ?= 4.29 
 
-REPO = conjur-demo-launcher
-NAME = conjur-demo-launcher
+REPO = conjurclientenv
+NAME = conjurclientenv
 INSTANCE = default
 
 .PHONY: build push shell run start stop rm release
 
-build: link 
+build:  
 	docker build -t $(NS)/$(REPO):$(VERSION) .
 
 push:
@@ -34,7 +33,4 @@ release: build
 
 default: build
 
-link:
-	cp ../Vagrantfile Vagrantfile
-	cp -r ../cookbooks cookbooks
 

@@ -1,6 +1,9 @@
 #
-# Launches Conjur Demo 
+# Conjur Client Env that can be used to launch images in AWS 
+# using Vagrant with the AWS and Chef provisioners
+# and interact with them using the CLI
 #
+# https://hub.docker.com/r/jbregman/conjurclientenv/
 #
 
 # Pull base image.
@@ -46,15 +49,4 @@ RUN sudo apt-get install -yqq rsync
 RUN wget https://s3.amazonaws.com/conjur-releases/omnibus/conjur_4.29.0-1_amd64.deb 
 RUN dpkg -i conjur_4.29.0-1_amd64.deb 
 
-#copy over the demo
-#COPY Vagrantfile launch/Vagrantfile
-#COPY cookbooks launch/cookbooks
- 
-#COPY launch.sh launch/launch.sh
-#RUN chmod a+x launch/launch.sh
-
-
-#COPY env.sh launch/env.sh
-#RUN chmod a+x launch/env.sh
-
-#ENTRYPOINT ./launch.sh 2> lauch.err.log && /bin/bash
+RUN apt-get -yqq install git
